@@ -1,0 +1,22 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="card">
+    <div class="card-content">
+        <span class="card-title">Створити акаунт</span>
+        <div class="input-field">
+            <input id="email" type="email" formControlName="email" [ngClass]="{'invalid':form.get('email')?.invalid && form.get('email')?.touched}" required>
+            <label for="email">Email:</label>
+            <span *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="hepler-text red-text">
+                <span *ngIf="form.get('email')?.errors">Email не коректний!</span>
+            </span>
+        </div>
+        <div class="input-field">
+            <input id="password" type="password" formControlName="password" [ngClass]="{'invalid':form.get('password')?.invalid && form.get('password')?.touched}" required>
+            <label for="password">Пароль:</label>
+            <span *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="hepler-text red-text">
+                <span *ngIf="form.get('password')?.errors">Пароль не коректний!</span>
+            </span>
+        </div>
+    </div>
+    <div class="card-action">
+        <button type="submit" [disabled]="form.invalid || form.disabled" class="modal-action btn waves-effect">Створити</button>
+    </div>
+</form>
